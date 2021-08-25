@@ -21,6 +21,7 @@ type WebhookEvent struct {
 
 type WebhookChatMessage struct {
 	User      *user.User `json:"user,omitempty"`
+	ClientId  uint       `json:"clientId,omitempty"`
 	Body      string     `json:"body,omitempty"`
 	RawBody   string     `json:"rawBody,omitempty"`
 	ID        string     `json:"id,omitempty"`
