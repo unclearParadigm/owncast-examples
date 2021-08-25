@@ -112,6 +112,7 @@ func (s *ChatServer) sendUserJoinedMessage(c *ChatClient) {
 	userJoinedEvent := events.UserJoinedEvent{}
 	userJoinedEvent.SetDefaults()
 	userJoinedEvent.User = c.User
+	userJoinedEvent.ClientId = c.id
 
 	if err := s.Broadcast(userJoinedEvent.GetBroadcastPayload()); err != nil {
 		log.Errorln("error adding client to chat server", err)
@@ -239,6 +240,7 @@ func (s *ChatServer) DisconnectUser(userID string) {
 		go func(client *ChatClient) {
 			event := events.UserDisabledEvent{}
 			event.SetDefaults()
+			event.ClientId = client.id
 
 			// Send this disabled event specifically to this single connected client
 			// to let them know they've been banned.
