@@ -34,6 +34,7 @@ type Event struct {
 
 type UserEvent struct {
 	User     *user.User `json:"user"`
+	ClientId uint       `json:"clientId"`
 	HiddenAt *time.Time `json:"hiddenAt,omitempty"`
 }
 
