@@ -40,6 +40,11 @@ func GetClientsForUser(userID string) ([]*ChatClient, error) {
 	return clients[userID], nil
 }
 
+func FindClientById(clientId uint) (*ChatClient, bool) {
+	client, found := _server.clients[clientId]
+	return client, found
+}
+
 func GetClients() []*ChatClient {
 	clients := []*ChatClient{}
 
