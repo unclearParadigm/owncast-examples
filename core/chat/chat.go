@@ -105,6 +105,12 @@ func SendAllWelcomeMessage() {
 	_server.sendAllWelcomeMessage()
 }
 
+func SendSystemMessageToClient(clientId uint, text string) {
+	if client, found_client := FindClientById(clientId); found_client {
+		_server.sendSystemMessageToClient(client, text)
+	}
+}
+
 func Broadcast(event events.OutboundEvent) error {
 	return _server.Broadcast(event.GetBroadcastPayload())
 }
