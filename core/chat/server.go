@@ -313,6 +313,7 @@ func (s *ChatServer) sendSystemMessageToClient(c *ChatClient, message string) {
 		},
 	}
 	clientMessage.SetDefaults()
+	clientMessage.RenderBody()
 	s.Send(clientMessage.GetBroadcastPayload(), c)
 }
 
